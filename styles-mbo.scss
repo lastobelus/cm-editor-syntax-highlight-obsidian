@@ -1,0 +1,107 @@
+@use "sass:selector";
+
+@mixin codeAndFrontmatter($child) {
+  #{selector.unify(".cm-hmd-frontmatter", $child)},
+  #{selector.unify(".cm-math", $child)},
+  pre.HyperMD-codeblock #{$child} {
+    @content;
+  }
+}
+
+.cm-s-obsidian pre.HyperMD-codeblock span.cm-formatting-code-block {
+  color: var(--text-muted);
+}
+
+.cm-s-obsidian pre.HyperMD-codeblock .cm-keyword {
+  font-weight: normal;
+}
+
+.cm-s-obsidian {
+  .theme-dark & {
+    .cm-hmd-frontmatter,
+    pre.HyperMD-codeblock {
+      color: #ffffec;
+    }
+
+    @include codeAndFrontmatter(".CodeMirror-gutters") {
+      background: #4e4e4e;
+      border-right: 0px;
+    }
+    @include codeAndFrontmatter(".CodeMirror-guttermarker") {
+      color: white;
+    }
+    @include codeAndFrontmatter(".CodeMirror-guttermarker-subtle") {
+      color: grey;
+    }
+    @include codeAndFrontmatter(".CodeMirror-linenumber") {
+      color: #dadada;
+    }
+    @include codeAndFrontmatter(".CodeMirror-cursor") {
+      border-left: 1px solid #ffffec;
+    }
+
+    @include codeAndFrontmatter(".cm-comment") {
+      color: #95958a;
+    }
+    @include codeAndFrontmatter(".cm-atom") {
+      color: #00a8c6;
+    }
+    @include codeAndFrontmatter(".cm-number") {
+      color: #00a8c6;
+    }
+
+    @include codeAndFrontmatter(".cm-property") {
+      color: #9ddfe9;
+    }
+
+    @include codeAndFrontmatter(".cm-attribute") {
+      color: #9ddfe9;
+    }
+    @include codeAndFrontmatter(".cm-keyword") {
+      color: #ffb928;
+    }
+    @include codeAndFrontmatter(".cm-string") {
+      color: #ffcf6c;
+    }
+    @include codeAndFrontmatter(".cm-string.cm-property") {
+      color: #ffffec;
+    }
+
+    @include codeAndFrontmatter(".cm-variable") {
+      color: #ffffec;
+    }
+    @include codeAndFrontmatter(".cm-variable-2") {
+      color: #00a8c6;
+    }
+    @include codeAndFrontmatter(".cm-def") {
+      color: #ffffec;
+    }
+    @include codeAndFrontmatter(".cm-bracket") {
+      color: #fffffc;
+      font-weight: bold;
+    }
+    @include codeAndFrontmatter(".cm-tag") {
+      color: #9ddfe9;
+    }
+    @include codeAndFrontmatter(".cm-link") {
+      color: #f54b07;
+    }
+    @include codeAndFrontmatter(".cm-error") {
+      border-bottom: #636363;
+      color: #ffffec;
+    }
+    @include codeAndFrontmatter(".cm-qualifier") {
+      color: #ffffec;
+    }
+
+    @include codeAndFrontmatter(".CodeMirror-activeline-background") {
+      background: #494b41;
+    }
+    @include codeAndFrontmatter(".CodeMirror-matchingbracket") {
+      color: #ffb928 !important;
+    }
+    @include codeAndFrontmatter(".CodeMirror-matchingtag") {
+      background: rgba(255, 255, 255, 0.37);
+    }
+  }
+}
